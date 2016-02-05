@@ -2,11 +2,33 @@
 
 A collection of CSS [utility classes](http://davidtheclark.com/on-utility-classes/) - based on [Emmet](http://docs.emmet.io/cheat-sheet/) shorthand conventions - to aid in [object-oriented](http://appendto.com/2014/04/oocss/) CSS development.
 
+## Usage
+
+Terse OOCSS classes can be a powerful tool for rapid and scalable development. They can be used independently, or to augment existing objects.
+
+```html
+<div class="card">
+	<div class="card__photo ta-c">
+		<h3>Business Name</h3>
+		<div class="fz-s">Some City, America</div>
+	</div>
+	<div class="card__cell">
+		<h3 class="mt-xs mb-xxs">John Doe</h3>
+		<div class="fz-s"><span class="fw-b">Member number:</span> 081425</div>
+		<div class="mt mb-l">
+			123 Main St.<br />
+			Columbus, OH 43215
+		</div>
+		<a href="#" class="button">Select Account</a>
+	</div>
+</div>
+```
+
 ## Install
 
 You can [download the repo](https://github.com/LukeAskew/css-utils/archive/master.zip), or install via [Bower](http://bower.io/):
 
-```
+```bash
 $ bower install css-utils --save-dev
 ```
 
@@ -43,6 +65,7 @@ Selector | Responsibility
 `.rwd-img` | responsive image (max-width: 100%)
 `.rwd-img-st` | stretched responsive image (width: 100%)
 `.intrinsic` | intrinsic ratio wrapper; default 16:9 ratio
+`.ir` | image replacement (@mixin included)
 
 ### Position
 
@@ -75,25 +98,35 @@ Increment | Value*
 
 Examples:
 
-```markup
+```html
 <div class="mt-xl">
 	<!-- 4.236em top margin -->
-</div> 
+</div>
 
 <div class="pl-s">
 	<!-- 0.618em left padding -->
-</div> 
+</div>
 
 <div class="mb">
 	<!-- 1em bottom margin -->
-</div> 
+</div>
 ```
 
-The spacing scale and step progression are configurable. Override these defaults in your own Sass:
+The spacing scale and step progression are configurable. Set these values in your own Sass, before including the css-utils lib:
 
-```
-$scale: 1.618; // golden ratio
-$steps: -4, -3, -1, 0, 1, 3, 4; // xxs - xxl
+```sass
+// default values
+$util-ratio: 1.618;
+$util-base: 1em;
+$util-spacing: (
+	xxs: -4,
+	xs: -3,
+	s: -1,
+	base: 0,
+	l: 1,
+	xl: 3,
+	xxl: 4
+);
 ```
 
 ### Text
@@ -125,24 +158,4 @@ Selector | Responsibility
 
 ## License
 
-The MIT License (MIT)
-
-Copyright (c) 2014 Luke Askew
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+[The MIT License (MIT)](http://opensource.org/licenses/mit-license.php)
